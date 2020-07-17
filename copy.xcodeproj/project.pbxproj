@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D4BDB5A24B067BE0032D4E1 /* copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = copy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D4BDB5A24B067BE0032D4E1 /* Kao!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kao!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4BDB5D24B067BE0032D4E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D4BDB5F24B067BE0032D4E1 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		2D4BDB6124B067BE0032D4E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		2D4BDB5B24B067BE0032D4E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D4BDB5A24B067BE0032D4E1 /* copy.app */,
+				2D4BDB5A24B067BE0032D4E1 /* Kao!.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,7 +109,7 @@
 			);
 			name = copy;
 			productName = copy;
-			productReference = 2D4BDB5A24B067BE0032D4E1 /* copy.app */;
+			productReference = 2D4BDB5A24B067BE0032D4E1 /* Kao!.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -304,7 +304,9 @@
 				CODE_SIGN_ENTITLEMENTS = copy/copy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"copy/Preview Content\"";
+				DEVELOPMENT_TEAM = B9B9U23L8L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = copy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,8 +314,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = a.copy;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sl.copy;
+				PRODUCT_NAME = "Kao!";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -325,7 +327,9 @@
 				CODE_SIGN_ENTITLEMENTS = copy/copy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"copy/Preview Content\"";
+				DEVELOPMENT_TEAM = B9B9U23L8L;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = copy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,8 +337,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = a.copy;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sl.copy;
+				PRODUCT_NAME = "Kao!";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

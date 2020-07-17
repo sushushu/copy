@@ -14,25 +14,9 @@
             filePath = "copy/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "action(sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DAA3B994-84B5-43D9-B627-8A3DD8881637"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "copy/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "obsvKeyboard()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,29 +30,45 @@
             filePath = "copy/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "obsvKeyboard()"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "addGlobalObsvKeyboardMonitor()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1A6803B8-8D54-466B-9F22-2FE60F5C1C4B"
+            uuid = "ECEBCDA7-5502-4284-BEEE-F60BD326DAD3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "copy/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "obsvKeyboard()"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "applicationDidFinishLaunching(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9F6A32B-61FE-4EA3-81EB-B26A4F8A6656"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "copy/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "addGlobalObsvKeyboardMonitor()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "1A6803B8-8D54-466B-9F22-2FE60F5C1C4B - 98159bb43e961a07"
+                  uuid = "D9F6A32B-61FE-4EA3-81EB-B26A4F8A6656 - 98159bb43e961a07"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -80,10 +80,10 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
                   endingLineNumber = "100"
-                  offsetFromSymbolStart = "198">
+                  offsetFromSymbolStart = "374">
                </Location>
                <Location
-                  uuid = "1A6803B8-8D54-466B-9F22-2FE60F5C1C4B - 98159bb43e961a07"
+                  uuid = "D9F6A32B-61FE-4EA3-81EB-B26A4F8A6656 - 98159bb43e961a07"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -95,10 +95,10 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
                   endingLineNumber = "100"
-                  offsetFromSymbolStart = "547">
+                  offsetFromSymbolStart = "396">
                </Location>
                <Location
-                  uuid = "1A6803B8-8D54-466B-9F22-2FE60F5C1C4B - 98159bb43e961a07"
+                  uuid = "D9F6A32B-61FE-4EA3-81EB-B26A4F8A6656 - 98159bb43e961a07"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -110,71 +110,9 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
                   endingLineNumber = "100"
-                  offsetFromSymbolStart = "1567">
-               </Location>
-               <Location
-                  uuid = "1A6803B8-8D54-466B-9F22-2FE60F5C1C4B - 98159bb43e961a07"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSEvent) -&gt; () in copy.AppDelegate.obsvKeyboard() -&gt; ()"
-                  moduleName = "copy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jianzhimao/Desktop/copy/copy/AppDelegate.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "1651">
-               </Location>
-               <Location
-                  uuid = "1A6803B8-8D54-466B-9F22-2FE60F5C1C4B - 98159bb43e961a07"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSEvent) -&gt; () in copy.AppDelegate.obsvKeyboard() -&gt; ()"
-                  moduleName = "copy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jianzhimao/Desktop/copy/copy/AppDelegate.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "1735">
+                  offsetFromSymbolStart = "469">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7B05E8F6-BAC5-46B2-80B1-317B5CC6D598"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "copy/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "obsvKeyboard()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5EBFDC32-0A37-4537-ACFC-46BD0FD663C9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "copy/AppDelegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "obsvKeyboard()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

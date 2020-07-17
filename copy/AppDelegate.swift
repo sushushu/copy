@@ -13,27 +13,27 @@ import Carbon
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let c = Clipboard()
-    
+    let notificationNameOfKeyBoradString = " NotificationCenter.default_cmd_option"
     var statusBarItem: NSStatusItem!
     var statusBarMenu = NSMenu(title: "Cap")
     var count = 0
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-        
         // 设置状态栏图标
         NSApp.applicationIconImage = NSImage.init(named: "smile")
 
         self.initStatusBar()
-        self.obsvKeyboard()
+        self.addGlobalObsvKeyboardMonitor()
         
         c.startListening()
         c.onNewCopy { (content) in
-            let img = NSImage.init(pasteboard: NSPasteboard.general)
-            print(img ?? "")
-            print(content)
+//            let img = NSImage.init(pasteboard: NSPasteboard.general)
+//            print(img ?? "")
+//            print(content)
+            
+            self.statusBarMenu.addItem(withTitle: content, action: #selector(self.action), keyEquivalent: "")
+            
         }
-        
     }
 
     /// 初始化状态栏按钮
@@ -42,32 +42,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem.button?.title = "🌯"
         
         statusBarItem.menu = statusBarMenu
-        statusBarMenu.addItem(withTitle: "111", action: #selector(action), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "222", action: #selector(action), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "333", action: #selector(action), keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "退出", action: #selector(_exit), keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "下面是你的剪切板历史内容,点击即可复制↓↓↓", action: #selector(action), keyEquivalent: "Escape")
+        statusBarMenu.addItem(withTitle: "=================================", action: #selector(action), keyEquivalent: "Down")
+        statusBarMenu.addItem(withTitle: "===============分割线=============", action: #selector(action), keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "=================================", action: #selector(action), keyEquivalent: "")
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: notificationNameOfKeyBoradString), object: nil, queue: nil) { (noti) in
+            print(noti)
+        }
     }
     
     @objc func action( sender : NSButton) {
-        print("1111")
-        
         count += 1
             
-        statusBarMenu.addItem(withTitle: "\(count)", action: #selector(action), keyEquivalent: "")
+        let title = sender.title
+        
+//        statusBarMenu.addItem(withTitle: "\(count)", action: #selector(action), keyEquivalent: "")
 //        self._alert(title: "111", message: nil)
+        self.c.copy(string: title)
+        print(sender.title)
     }
     
-    
+    @objc func _exit() {
+        exit(1)
+    }
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
 
     // MARK: - obsv
-    func obsvKeyboard() {
+    func addGlobalObsvKeyboardMonitor() {
         
         //  监听鼠标移动 ， 激活状态按下cmd按钮
 //        NSEvent.addGlobalMonitorForEvents(matching: NSEvent.EventTypeMask(rawValue: NSEvent.EventTypeMask.RawValue(kFSEventStreamEventFlagRootChanged))) { (event) in
-//            
 //            print(event)
 //        }
 //
@@ -95,16 +104,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
        
         var cmd = false , opt = false
         NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { (event) in
-//            let flags = event.modifierFlags
-            
-            
+            //            let flags = event.modifierFlags
+            print(event)
             
             switch event.keyCode {
             case 55 :
                 cmd = true
                 break
-                
-
             case 58 :
                 opt = true
                 break
@@ -113,49 +119,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             
-//            switch flags {
-//
-//            case .command:
-//                print(keyCodeMask)
-//
-//                fallthrough // 使用了fallthrough 语句，则会继续执行之后的 case 或 default 语句
-//
-//            case .shift:
-//                print(keyCodeMask)
-//                fallthrough
-//
-//            case .option:
-//                print(keyCodeMask)
-//
-//                fallthrough
-//
-//            case .function:
-//                print(keyCodeMask)
-//                fallthrough
-//
-//            case .deviceIndependentFlagsMask:
-//                print(keyCodeMask)
-//                fallthrough
-//
-//            default :
-//                print(keyCodeMask)
-////                break /* 可选 */11
-//            }
-            
             if cmd && opt {
                 print("嗯 同时按下了cmd 和 option！ ")
                 cmd = false
                 opt = false
+                
+                NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: self.notificationNameOfKeyBoradString)))
             }
-            print(event)
-        }
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "NOTI_HOTKEY"), object: nil, queue: nil) { (noti) in
-            print(noti)
         }
     }
     
     // MARK: - NSMenuDelegate
+    
     
     
     

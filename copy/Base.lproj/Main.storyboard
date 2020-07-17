@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
     </dependencies>
     <scenes>
@@ -10,9 +11,9 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="copy" id="1Xt-HY-uBw">
+                            <menuItem title="Kao!" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="copy" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Kao!" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
                                         <menuItem title="About copy" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
