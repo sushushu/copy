@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarMenu.addItem(withTitle: "============↓↓↓分隔↓↓↓============", action: nil, keyEquivalent: "")
         statusBarMenu.addItem(withTitle: "         ", action: nil, keyEquivalent: "")
         
-        for value in self.db.readHistory().reversed() {
+        for value in self.db.readHistory().reversed() { // 从数据库取出来逆序一下
             statusBarMenu.addItem(withTitle: value.content!, action: #selector(action), keyEquivalent: "")
         }
     }
@@ -76,7 +76,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let title = sender.title
 
         self.clipBoardWoker.copy(string: title)
-        print(sender.title)
     }
     
     @objc func _exit() {
