@@ -12,58 +12,70 @@ import Carbon
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    let c = Clipboard()
-    let notificationNameOfKeyBoradString = " NotificationCenter.default_cmd_option"
+    let clipBoardWoker = Clipboard()
+    let notificationNameOfKeyBoradString = " NotificationCenter.default_cmd_option" // 监听快捷键响应key
     var statusBarItem: NSStatusItem!
     var statusBarMenu = NSMenu(title: "Cap")
     let db = DBManger.shared
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // 设置状态栏图标
-        NSApp.applicationIconImage = NSImage.init(named: "icons-96")
-        
         self.initStatusBar()
         self.addGlobalObsvKeyboardMonitor()
+        self.addShortcuKeyMonitor()
+        self.addClipBoardMonitor()
+    }
+    
+    /// 清除所有menu并且从db读取历史记录
+    private func resetDefaultItems () {
+        statusBarMenu.removeAllItems()
+        statusBarMenu.addItem(withTitle: "退出", action: #selector(_exit), keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "清空所有", action: #selector(_clearDB), keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "===下面是你的剪切板历史内容,点击即可复制===", action: nil, keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "===同时按下command和option激活===", action: nil, keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "============↓↓↓分隔↓↓↓============", action: nil, keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "         ", action: nil, keyEquivalent: "")
         
-        c.startListening()
-        c.onNewCopy { (content) in
+        for value in self.db.readHistory().reversed() {
+            statusBarMenu.addItem(withTitle: value.content!, action: #selector(action), keyEquivalent: "")
+        }
+    }
+    
+    /// 监听快捷键响应
+    private func addShortcuKeyMonitor() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: notificationNameOfKeyBoradString), object: nil, queue: nil) { (noti) in
+            self.statusBarItem.popUpMenu(self.statusBarMenu)
+        }
+    }
+    
+    /// 监听j剪切板
+    private func addClipBoardMonitor() {
+        clipBoardWoker.startListening()
+        clipBoardWoker.onNewCopy { (content) in
             //            let img = NSImage.init(pasteboard: NSPasteboard.general)
             //            print(img ?? "")
             //            print(content)
             
-            self.statusBarMenu.addItem(withTitle: content, action: #selector(self.action), keyEquivalent: "")
-            _ = self.db.addContent(content: content)
+            // 总是插入到最前面
+            if self.statusBarMenu.items.count >= 6 {
+                self.statusBarMenu.insertItem(withTitle: content, action: #selector(self.action), keyEquivalent: "", at: 6)
+                _ = self.db.addContent(content: content)
+            }
         }
     }
     
-
     /// 初始化状态栏按钮
     func initStatusBar() {
         statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusBarItem.button?.title = "🌯"
-        
         statusBarItem.menu = statusBarMenu
-        statusBarMenu.addItem(withTitle: "退出", action: #selector(_exit), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "清空所有", action: #selector(_clearDB), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "===下面是你的剪切板历史内容,点击即可复制===", action: #selector(action), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "===同时按下command和option激活===", action: #selector(action), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "===============分割线=============", action: #selector(action), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "=================================", action: #selector(action), keyEquivalent: "")
         
-        for value in self.db.readHistory() {
-            statusBarMenu.addItem(withTitle: value.content!, action: #selector(action), keyEquivalent: "")
-        }
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: notificationNameOfKeyBoradString), object: nil, queue: nil) { (noti) in
-            print(noti)
-            self.statusBarItem.popUpMenu(self.statusBarMenu)
-        }
+        self.resetDefaultItems()
     }
     
     @objc func action( sender : NSButton) {
         let title = sender.title
 
-        self.c.copy(string: title)
+        self.clipBoardWoker.copy(string: title)
         print(sender.title)
     }
     
@@ -73,17 +85,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func _clearDB() {
         if self.db.clearContentTable() {
-            self._alert(title: "😝", message: "清除成功~")
-            statusBarMenu.removeAllItems()
-            statusBarMenu.addItem(withTitle: "退出", action: #selector(_exit), keyEquivalent: "")
-            statusBarMenu.addItem(withTitle: "清空所有", action: #selector(_clearDB), keyEquivalent: "")
-            statusBarMenu.addItem(withTitle: "===下面是你的剪切板历史内容,点击即可复制===", action: #selector(action), keyEquivalent: "")
-            statusBarMenu.addItem(withTitle: "===同时按下command和option激活===", action: #selector(action), keyEquivalent: "")
-            statusBarMenu.addItem(withTitle: "===============分割线=============", action: #selector(action), keyEquivalent: "")
-            statusBarMenu.addItem(withTitle: "=================================", action: #selector(action), keyEquivalent: "")
-            for value in self.db.readHistory() {
-                statusBarMenu.addItem(withTitle: value.content!, action: #selector(action), keyEquivalent: "")
-            }
+//            self._alert(title: "😝", message: "清除成功~")
+            self.initStatusBar()
         }
     }
     
@@ -130,7 +133,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.messageText = title ?? ""
         alert.informativeText = message ?? ""
         alert.addButton(withTitle: "关闭")
-        alert.window.titlebarAppearsTransparent = true
         alert.runModal()
     }
     

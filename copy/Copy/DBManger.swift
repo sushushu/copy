@@ -52,6 +52,7 @@ class DBManger {
         var ret = Array<BaseModel>()
         do {
             ret = try self.db.getObjects(fromTable: self.contentTable)
+//            ret = try self.db.getObject(on: nil, fromTable: self.contentTable, where: contentTable, orderBy: <#T##[OrderBy]?#>, offset: <#T##Offset?#>)
             print("read objects from contentTable success")
         } catch {
             print("error")
