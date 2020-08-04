@@ -97,29 +97,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //            print(event)
         //        }
 
-        var cmd = false , opt = false
         NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { (event) in
-            //            let flags = event.modifierFlags
-//            print(event)
-            
-            switch event.keyCode {
-            case 55 :
-                cmd = true
-                break
-            case 58 :
-                opt = true
-                break
-                
-            default : break
-                
-            }
-            
-            
-            if cmd && opt {
-                print("嗯 同时按下了cmd 和 option！ ")
-                cmd = false
-                opt = false
-                
+            if event.modifierFlags.contains(.command) && event.modifierFlags.contains(.option) {
+                print("同时按下了 cmd + option ")
                 NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: self.notificationNameOfKeyBoradString)))
             }
         }

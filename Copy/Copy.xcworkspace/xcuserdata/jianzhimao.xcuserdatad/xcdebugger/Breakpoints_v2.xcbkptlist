@@ -112,8 +112,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
             endingLineNumber = "65"
-            landmarkName = "addClipBoardMonitor()"
-            landmarkType = "7">
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,8 +126,72 @@
             filePath = "Copy/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "addGlobalObsvKeyboardMonitor()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B5C8137-0229-498D-8158-30AB843861B3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Copy/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "addGlobalObsvKeyboardMonitor()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8B5C8137-0229-498D-8158-30AB843861B3 - fd602ba9dc16dba1"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kao_.AppDelegate.addGlobalObsvKeyboardMonitor() -&gt; ()"
+                  moduleName = "Kao!"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jianzhimao/Desktop/copy/Copy/Copy/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "50">
+               </Location>
+               <Location
+                  uuid = "8B5C8137-0229-498D-8158-30AB843861B3 - ca9a042bfc90bfca"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSEvent) -&gt; () in Kao_.AppDelegate.addGlobalObsvKeyboardMonitor() -&gt; ()"
+                  moduleName = "Kao!"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jianzhimao/Desktop/copy/Copy/Copy/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BD0E85F-CFDA-4AA1-BBFD-781914C11651"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Copy/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "addGlobalObsvKeyboardMonitor()"
             landmarkType = "7">
          </BreakpointContent>
