@@ -45,7 +45,7 @@ public final class HandlePool {
 
     static func getExistingPool(with tag: Tag) throws -> RecyclableHandlePool {
         spin.lock(); defer { spin.unlock() }
-        guard let index = pools.index(where: { (arg) -> Bool in
+        guard let index = pools.firstIndex(where: { (arg) -> Bool in
             return arg.value.handlePool.tag == tag
         }) else {
             throw Error.reportCore(tag: tag,

@@ -11,7 +11,7 @@ import Foundation
 struct Utils {
     
     ///  获取当前长整型时间戳
-    func getNowTimeStampMillisecond() -> Int {
+    func getCurrentTimeStamp() -> Int {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short

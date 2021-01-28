@@ -38,6 +38,7 @@ class Clipboard {
     
     /// 写入剪切板
     func copy(string: String) {
+        // 空字符串不管
         if string.count == 0 {
             return;
         }
@@ -51,17 +52,19 @@ class Clipboard {
             return
         }
         
+        changeCount = pasteboard.changeCount
+        
+        if let img = NSImage.init(pasteboard: pasteboard) {  // 这里已经可以拿到image，可以压缩存到数据库。多文件复制，参考：https://blog.csdn.net/u014600626/article/details/53635192
+            for hook in hooks {
+                hook("这是图片 + \(img.className) ")
+            }
+            return
+        }
         // 网页复制的图片:  WebURLsWithTitlesPboardType 、 com.apple.webarchive 、 Apple Web Archive pasteboard type
         if let lastItem = pasteboard.string(forType: NSPasteboard.PasteboardType.string) {
             for hook in hooks {
                 hook(lastItem)
             }
         }
-        
-//        if let lastItem11 = pasteboard.data(forType: NSPasteboard.PasteboardType.string) {
-//            print(lastItem11)
-//        }
-        changeCount = pasteboard.changeCount
     }
-    
 }

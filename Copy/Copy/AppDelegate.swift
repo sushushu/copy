@@ -9,11 +9,12 @@
 import Cocoa
 import Carbon
 
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let clipBoardWoker = Clipboard()
-    let notificationNameOfKeyBoradString = " NotificationCenter.default_cmd_option" // 监听快捷键响应key
+    let notificationNameOfKeyBoradString = "kNotificationCenter.default_cmd_option" // 监听快捷键响应key
     var statusBarItem: NSStatusItem!
     var statusBarMenu = NSMenu(title: "Cap")
     let db = DBManger.shared
@@ -23,7 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.addGlobalObsvKeyboardMonitor()
         self.addShortcuKeyMonitor()
         self.addClipBoardMonitor()
+        
     }
+    
     
     /// 清除所有menu并且从db读取历史记录
     private func resetDefaultItems () {
@@ -84,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func _clearDB() {
         if self.db.clearContentTable() {
-//            self._alert(title: "😝", message: "清除成功~")
+            self._alert(title: "😝", message: "清除成功~")
             self.initStatusBar()
         }
     }
@@ -107,7 +110,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 
     // MARK: private
-    func _alert(title:String? , message:String?) {
+    func _alert(title:String? , message:String?) { // 不用在当前App响应
         let alert = NSAlert()
         alert.messageText = title ?? ""
         alert.informativeText = message ?? ""

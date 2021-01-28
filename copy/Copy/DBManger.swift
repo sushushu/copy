@@ -29,9 +29,9 @@ class DBManger {
         
         // 延迟初始化是 WCDB Swift 的原则之一，绝大部分数据只会在需要用到时才创建并初始化。数据库的打开就是其中一个例子。
         // 数据库会在第一次进行操作时，自动打开并初始化。开发者不需要手动调用。
-        print("DBManger init ing...")
+        print("DBManger init ing... \n")
         self.db = Database.init(withPath: (self.documents) + "/" + (self.dbName))
-        print("Database init,db path is:  \(path)")
+        print("Database init,db path is:  \(path) \n")
         
         self.createTables()
     }
@@ -80,11 +80,11 @@ class DBManger {
         do {
             var model = BaseModel()
             model.content = content
-            model.timeStamp = Utils.init().getNowTimeStampMillisecond()
+            model.timeStamp = Utils.init().getCurrentTimeStamp()
             model.type = "string"
             model.description = "null"
             try self.db.insert(objects: model, intoTable: self.contentTable)
-            print("addContent success :  \(content)")
+            print("addContent success :  \(content) \n")
         } catch {
             print("addContent error")
             ret = false

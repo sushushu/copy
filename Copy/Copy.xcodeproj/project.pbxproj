@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		633B7B3F91516247D638EA4B /* Pods_Copy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C20A56C3D406535D77A1220D /* Pods_Copy.framework */; };
 		B22A54BA24C9649D000AC7CD /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22A54B924C9649D000AC7CD /* BaseModel.swift */; };
 		B22A54BC24C96737000AC7CD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22A54BB24C96737000AC7CD /* Utils.swift */; };
 		B232F77124C816C500465CFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232F77024C816C500465CFA /* AppDelegate.swift */; };
@@ -16,6 +15,9 @@
 		B232F77824C816C600465CFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B232F77624C816C600465CFA /* Main.storyboard */; };
 		B232F78124C816F700465CFA /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232F78024C816F700465CFA /* Clipboard.swift */; };
 		B232F78524C819FD00465CFA /* DBManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232F78424C819FC00465CFA /* DBManger.swift */; };
+		B251A5B925568E99002C7DC0 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B251A5B725568E99002C7DC0 /* MainWindowController.swift */; };
+		B251A5BA25568E99002C7DC0 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B251A5B825568E99002C7DC0 /* MainWindowController.xib */; };
+		E818230E3E539306B8223E37 /* Pods_Copy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C611146529CCB5E388E40E59 /* Pods_Copy.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +33,10 @@
 		B232F77A24C816C600465CFA /* Copy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Copy.entitlements; sourceTree = "<group>"; };
 		B232F78024C816F700465CFA /* Clipboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		B232F78424C819FC00465CFA /* DBManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManger.swift; sourceTree = "<group>"; };
+		B251A5B725568E99002C7DC0 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		B251A5B825568E99002C7DC0 /* MainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		BA256B08E51D6C76182AE789 /* Pods-Copy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Copy.release.xcconfig"; path = "Target Support Files/Pods-Copy/Pods-Copy.release.xcconfig"; sourceTree = "<group>"; };
-		C20A56C3D406535D77A1220D /* Pods_Copy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Copy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C611146529CCB5E388E40E59 /* Pods_Copy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Copy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				633B7B3F91516247D638EA4B /* Pods_Copy.framework in Frameworks */,
+				E818230E3E539306B8223E37 /* Pods_Copy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +75,8 @@
 				B232F77024C816C500465CFA /* AppDelegate.swift */,
 				B232F78024C816F700465CFA /* Clipboard.swift */,
 				B232F77224C816C500465CFA /* ViewController.swift */,
+				B251A5B725568E99002C7DC0 /* MainWindowController.swift */,
+				B251A5B825568E99002C7DC0 /* MainWindowController.xib */,
 				B232F78424C819FC00465CFA /* DBManger.swift */,
 				B22A54BB24C96737000AC7CD /* Utils.swift */,
 				B22A54B924C9649D000AC7CD /* BaseModel.swift */,
@@ -85,7 +91,7 @@
 		F449F2A718D6AC6ADE337A43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C20A56C3D406535D77A1220D /* Pods_Copy.framework */,
+				C611146529CCB5E388E40E59 /* Pods_Copy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B232F77524C816C600465CFA /* Assets.xcassets in Resources */,
+				B251A5BA25568E99002C7DC0 /* MainWindowController.xib in Resources */,
 				B232F77824C816C600465CFA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B232F78524C819FD00465CFA /* DBManger.swift in Sources */,
+				B251A5B925568E99002C7DC0 /* MainWindowController.swift in Sources */,
 				B232F78124C816F700465CFA /* Clipboard.swift in Sources */,
 				B232F77324C816C500465CFA /* ViewController.swift in Sources */,
 				B232F77124C816C500465CFA /* AppDelegate.swift in Sources */,
@@ -355,8 +363,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Copy/Copy.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = B9B9U23L8L;
 				INFOPLIST_FILE = Copy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -376,8 +386,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Copy/Copy.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = B9B9U23L8L;
 				INFOPLIST_FILE = Copy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

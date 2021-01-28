@@ -7,5 +7,7 @@ use_frameworks!
 target 'Copy' do
 	
 	pod 'WCDB.swift'
+  #pod 'KeyboardShortcuts'
+  #pod 'Preferences'
 
 end

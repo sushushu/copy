@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -678,7 +679,55 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="-880" y="-226"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="tpz-9U-jTq">
+            <objects>
+                <windowController id="UjA-8b-d5N" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oKL-kF-ZAB">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                        <connections>
+                            <outlet property="delegate" destination="UjA-8b-d5N" id="oxg-wN-zcP"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="vsX-rC-kq4" kind="relationship" relationship="window.shadowedContentViewController" id="TWb-Ii-Opt"/>
+                    </connections>
+                </windowController>
+                <customObject id="MEG-pg-TnI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1283" y="75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ODm-d2-dwA">
+            <objects>
+                <viewController id="vsX-rC-kq4" sceneMemberID="viewController">
+                    <view key="view" id="cXD-de-VSa">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fVZ-Zd-Xeo">
+                                <rect key="frame" x="174" y="154" width="81" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Qg-QW-9Q7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fVZ-Zd-Xeo" secondAttribute="trailing" constant="20" symbolic="YES" id="Mz5-Be-xHg"/>
+                            <constraint firstItem="fVZ-Zd-Xeo" firstAttribute="leading" secondItem="cXD-de-VSa" secondAttribute="leading" constant="180" id="WiJ-Vw-eXY"/>
+                            <constraint firstItem="fVZ-Zd-Xeo" firstAttribute="top" secondItem="cXD-de-VSa" secondAttribute="top" constant="88" id="cf3-Iq-ONx"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="b6T-Rv-ecN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-639" y="68"/>
         </scene>
     </scenes>
 </document>
