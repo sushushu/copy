@@ -14,7 +14,6 @@ import Carbon
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let clipBoardWoker = Clipboard()
-    let notificationNameOfKeyBoradString = "kNotificationCenter.default_cmd_option" // 监听快捷键响应key
     var statusBarItem: NSStatusItem!
     var statusBarMenu = NSMenu(title: "Cap")
     let db = DBManger.shared
@@ -22,7 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.initStatusBar()
         self.addGlobalObsvKeyboardMonitor()
-        self.addShortcuKeyMonitor()
         self.addClipBoardMonitor()
         
     }
@@ -43,22 +41,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    /// 监听快捷键响应
-    private func addShortcuKeyMonitor() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: notificationNameOfKeyBoradString), object: nil, queue: nil) { (noti) in
-            self.statusBarItem.popUpMenu(self.statusBarMenu)
-        }
-    }
     
     /// 监听j剪切板
+    //            let img = NSImage.init(pasteboard: NSPasteboard.general)
+    //            print(img ?? "")
+    //            print(content)
+    
+    
     private func addClipBoardMonitor() {
         clipBoardWoker.startListening()
         clipBoardWoker.onNewCopy { (content) in
-            //            let img = NSImage.init(pasteboard: NSPasteboard.general)
-            //            print(img ?? "")
-            //            print(content)
-            
-            // 总是插入到最前面
             if self.statusBarMenu.items.count >= 6 {
                 self.statusBarMenu.insertItem(withTitle: content, action: #selector(self.action), keyEquivalent: "", at: 6)
                 _ = self.db.addContent(content: content)
@@ -92,18 +84,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    
     // MARK: - obsv
+    /// 监听command和option键同事按下的时候弹出statusBarMenu
     func addGlobalObsvKeyboardMonitor() {
-        
-        //  监听鼠标移动 ， 激活状态按下cmd按钮
-        //        NSEvent.addGlobalMonitorForEvents(matching: NSEvent.EventTypeMask(rawValue: NSEvent.EventTypeMask.RawValue(kFSEventStreamEventFlagRootChanged))) { (event) in
-        //            print(event)
-        //        }
-
         NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { (event) in
-            if event.modifierFlags.contains(.command) && event.modifierFlags.contains(.option) {
-                print("同时按下了 cmd + option ")
-                NotificationCenter.default.post(Notification.init(name: Notification.Name(rawValue: self.notificationNameOfKeyBoradString)))
+            if event.modifierFlags.contains(.command) && event.modifierFlags.contains(.control) && event.modifierFlags.contains(.option) {
+                self.statusBarItem.popUpMenu(self.statusBarMenu)
             }
         }
     }
