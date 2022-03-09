@@ -25,14 +25,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    
     /// 清除所有menu并且从db读取历史记录
     private func resetDefaultItems () {
         statusBarMenu.removeAllItems()
         statusBarMenu.addItem(withTitle: "退出", action: #selector(_exit), keyEquivalent: "")
         statusBarMenu.addItem(withTitle: "清空所有", action: #selector(_clearDB), keyEquivalent: "")
         statusBarMenu.addItem(withTitle: "===下面是你的剪切板历史内容,点击即可复制===", action: nil, keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "===同时按下command和option激活===", action: nil, keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "===同时按下command、control和option激活===", action: nil, keyEquivalent: "")
         statusBarMenu.addItem(withTitle: "============↓↓↓分隔↓↓↓============", action: nil, keyEquivalent: "")
         statusBarMenu.addItem(withTitle: "         ", action: nil, keyEquivalent: "")
         
@@ -40,13 +39,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusBarMenu.addItem(withTitle: value.content!, action: #selector(action), keyEquivalent: "")
         }
     }
-    
-    
-    /// 监听j剪切板
-    //            let img = NSImage.init(pasteboard: NSPasteboard.general)
-    //            print(img ?? "")
-    //            print(content)
-    
     
     private func addClipBoardMonitor() {
         clipBoardWoker.startListening()
@@ -84,7 +76,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    
     // MARK: - obsv
     /// 监听command和option键同事按下的时候弹出statusBarMenu
     func addGlobalObsvKeyboardMonitor() {
@@ -95,7 +86,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-
     // MARK: private
     func _alert(title:String? , message:String?) { // TODO: 不用在当前App响应
         let alert = NSAlert()
@@ -104,10 +94,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.addButton(withTitle: "关闭")
         alert.runModal()
     }
-    
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
+
 }
 

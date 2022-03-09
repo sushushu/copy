@@ -47,7 +47,7 @@ class DBManger {
     }
 
     
-    // MARK: - R
+    // MARK: - read
     public func readHistory() -> Array<BaseModel> {
         var ret = Array<BaseModel>()
         do {
@@ -69,12 +69,8 @@ class DBManger {
         
         return false 
     }
-    
-    
-    // MARK: - C
-    
-    
-    // MARK: - U
+
+    // MARK: - add
     public func addContent(content:String) -> Bool {
         var ret = true
         do {
@@ -93,7 +89,7 @@ class DBManger {
         return ret
     }
     
-    // MARK: - D
+    // MARK: - clear
     public func clearContentTable() -> Bool {
         var ret = true
         do {

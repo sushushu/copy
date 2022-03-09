@@ -9,7 +9,6 @@
 import Foundation
 
 struct Utils {
-    
     ///  获取当前长整型时间戳
     func getCurrentTimeStamp() -> Int {
         let formatter = DateFormatter()
