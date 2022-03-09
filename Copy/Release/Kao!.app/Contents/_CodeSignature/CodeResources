@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		aiaosTs10XvBsZ4D2O9XM+43aD0=
+		0I2FUhbvZG49dnip5YLPqgvF9y0=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/MainMenu.nib</key>
 		<data>
-		AlCrgieZXf/bqSU/i2rc6liYCqE=
+		zUfKrmUv9xHTbcYOREzoiqVy9Gw=
 		</data>
 		<key>Resources/MainWindowController.nib</key>
 		<data>
@@ -31,10 +31,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			3TgcK4HPVahaTYFR5RSa2dCur/s=
+			jzRP9a1DWE2BdlQcXLl+ef/TY3g=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"25811911b686b15e441e7ff0a8f5b7a138a69308" or cdhash H"dd381c2b81cf55a85a4d8151e5149ad9d0aeaffb" or cdhash H"a24b9fc407a7b00d3ffd318eb81231d06c37262c" or cdhash H"bd58ea08922f6a0be9466c0eb5da5d5d6ec6fe12"</string>
+			<string>cdhash H"5e1a0bc1d0a8cb7430c918d6ed17b76207db5137" or cdhash H"8f344ff5ad43584d8176541c5cb97e79ffd36378" or cdhash H"57f49038a26d66500bac0a52c535d45178ee3889" or cdhash H"3c922a138e7edc024d841ef4635240e965f075ea"</string>
 		</dict>
 		<key>Frameworks/libswiftAppKit.dylib</key>
 		<dict>
@@ -202,19 +202,19 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			mTj/dFpWlqy9axZL6LYW7AhKAoA=
+			Z7cmf20fNAzurBpAFP2dnR96EeA=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"2b1c9a0e5446f17d5d20065c9bdbd00a2ff26785" or cdhash H"9938ff745a5696acbd6b164be8b616ec084a0280" or cdhash H"a7be0d903f3f6174aeddae5c91194b55171f6cb0" or cdhash H"582f5d7b84c7c69d45027ae163cabe4424655e98"</string>
+			<string>cdhash H"c0e7fb9b2acc9da076f6e2b1c967194fa600c1d5" or cdhash H"67b7267f6d1f340ceeac1a4014fd9d9d1f7a11e0" or cdhash H"545cf48f5f8f7f1d68101cded06dd0eac5d6cb58" or cdhash H"316ff7a8a193d723c3ec6c3950abf448c0985ec1"</string>
 		</dict>
 		<key>Frameworks/sqliterk.framework</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			gKPjxO/jqfg3V6nf6doeA9t5DUY=
+			uTdrxIoSAgU7GtB7rVfkohI1Ng4=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"9940bb524610f2090104318bed1418c671f4a9e9" or cdhash H"80a3e3c4efe3a9f83757a9dfe9da1e03db790d46" or cdhash H"d7967e3da244ba1f281c2b977d94f84581108a1f" or cdhash H"937fb11e9a592abd80050792aca4fc1a5122dc87"</string>
+			<string>cdhash H"89660bbbb1b948cf5b64371fc5918d76fe82d70f" or cdhash H"b9376bc48a1202053b1ad07bad57e4a21235360e" or cdhash H"1255fb75d285ec95817a8a5e2cc16267d6671ce3" or cdhash H"be118f9a3daad33d9f9df840974a4a131e7e8055"</string>
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
@@ -227,7 +227,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zCaG/eiFuCG5wk6hK0nLZoXceFU3sk8FXfuakgaq0wU=
+			8bdIfUmpdDZFs4QWOkll8USyqe9d89huCkLzE+nwyho=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/Info.plist</key>
@@ -241,7 +241,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nXSN5bG/LTEdy0LWseSI/1waYrsZJRh0ORX8g3d2JTQ=
+			KV/lq9cA0qQqvuU93sVqcHQRdcxfuGVWubcQ0jQIEr4=
 			</data>
 		</dict>
 		<key>Resources/MainWindowController.nib</key>
