@@ -19,7 +19,7 @@ class Clipboard {
     private var hooks: [Hook]
     
     init() {
-        changeCount = pasteboard.changeCount // changeCount是干嘛的？
+        changeCount = pasteboard.changeCount // TODO: changeCount是干嘛的？
         hooks = []
     }
     

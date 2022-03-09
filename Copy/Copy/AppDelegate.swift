@@ -97,7 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 
     // MARK: private
-    func _alert(title:String? , message:String?) { // 不用在当前App响应
+    func _alert(title:String? , message:String?) { // TODO: 不用在当前App响应
         let alert = NSAlert()
         alert.messageText = title ?? ""
         alert.informativeText = message ?? ""
