@@ -44,8 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         clipBoardWoker.startListening()
         clipBoardWoker.onNewCopy { (content) in
             if self.statusBarMenu.items.count >= 6 { // 这个6就是上面写死的那6个占位item
-                self.statusBarMenu.insertItem(withTitle: content, action: #selector(self.action), keyEquivalent: "", at: 6)
-                _ = self.db.addContent(content: content)
+                if self.db.addContent(content: content) {
+                    self.statusBarMenu.insertItem(withTitle: content, action: #selector(self.action), keyEquivalent: "", at: 6)
+                }
             }
         }
     }
