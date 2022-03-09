@@ -36,14 +36,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarMenu.addItem(withTitle: "         ", action: nil, keyEquivalent: "")
         
         for value in self.db.readHistory().reversed() { // 从数据库取出来逆序一下
-            statusBarMenu.addItem(withTitle: value.content!, action: #selector(action), keyEquivalent: "")
+            statusBarMenu.addItem(withTitle: value.content ?? " ", action: #selector(action), keyEquivalent: "")
         }
     }
     
     private func addClipBoardMonitor() {
         clipBoardWoker.startListening()
         clipBoardWoker.onNewCopy { (content) in
-            if self.statusBarMenu.items.count >= 6 {
+            if self.statusBarMenu.items.count >= 6 { // 这个6就是上面写死的那6个占位item
                 self.statusBarMenu.insertItem(withTitle: content, action: #selector(self.action), keyEquivalent: "", at: 6)
                 _ = self.db.addContent(content: content)
             }
@@ -71,13 +71,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func _clearDB() {
         if self.db.clearContentTable() {
-            self._alert(title: "😝", message: "清除成功~")
+            print("clear ing...")
             self.initStatusBar()
         }
     }
     
     // MARK: - obsv
-    /// 监听command和option键同事按下的时候弹出statusBarMenu
+    // 监听按钮激活
     func addGlobalObsvKeyboardMonitor() {
         NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { (event) in
             if event.modifierFlags.contains(.command) && event.modifierFlags.contains(.control) && event.modifierFlags.contains(.option) {
@@ -87,13 +87,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: private
-    func _alert(title:String? , message:String?) { // TODO: 不用在当前App响应
-        let alert = NSAlert()
-        alert.messageText = title ?? ""
-        alert.informativeText = message ?? ""
-        alert.addButton(withTitle: "关闭")
-        alert.runModal()
-    }
-
+//    func _alert(title:String? , message:String?) { // TODO: 不用在当前App响应
+//        let alert = NSAlert()
+//        alert.messageText = title ?? ""
+//        alert.informativeText = message ?? ""
+//        alert.addButton(withTitle: "关闭")
+//        if let window = window {
+//        alert.beginSheetModal(for: window., completionHandler: nil)
+//        } else {
+//            alert.runModal()
+//        }
+//    }
+    
 }
 
