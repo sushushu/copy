@@ -9,96 +9,139 @@
 import Cocoa
 import Carbon
 
-
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
-    let clipBoardWoker = Clipboard()
+    let clipboardWorker = Clipboard()
     var statusBarItem: NSStatusItem!
-    var statusBarMenu = NSMenu(title: "Cap")
-    let db = DBManger.shared
+    var statusBarMenu = NSMenu()
+    let dbManger = DBManager.shared
+    var infoItem = NSMenuItem()
+    private let fixedMenuItemCount = 9 // 用于固定菜单项的数量
+    private var isMenuVisible: Bool = false
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        self.initStatusBar()
-        self.addGlobalObsvKeyboardMonitor()
-        self.addClipBoardMonitor()
-        
+        print("Application did finish launching")
+        initStatusBar()
+        addGlobalKeyboardMonitor()
+        addClipBoardMonitor()
     }
     
     /// 清除所有menu并且从db读取历史记录
-    private func resetDefaultItems () {
+    private func resetDefaultItems() {
+        print("Resetting default items...")
         statusBarMenu.removeAllItems()
-        statusBarMenu.addItem(withTitle: "退出", action: #selector(_exit), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "清空所有", action: #selector(_clearDB), keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "===下面是你的剪切板历史内容,点击即可复制===", action: nil, keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "===同时按下command、control和option激活===", action: nil, keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "============↓↓↓分隔↓↓↓============", action: nil, keyEquivalent: "")
-        statusBarMenu.addItem(withTitle: "         ", action: nil, keyEquivalent: "")
+        addFixedMenuItems()
         
-        for value in self.db.readHistory().reversed() { // 从数据库取出来逆序一下
-            statusBarMenu.addItem(withTitle: value.content ?? " ", action: #selector(action), keyEquivalent: "")
+        for value in self.dbManger.readHistory().reversed() { // 从数据库取出来逆序一下
+            statusBarMenu.addItem(withTitle: value.content ?? " ", action: #selector(copyToClipboard), keyEquivalent: "")
         }
     }
     
+    private func addFixedMenuItems() {
+        print("Adding fixed menu items...")
+        statusBarMenu.delegate = self
+        
+        statusBarMenu.addItem(withTitle: "❗️ 退出应用", action:  #selector(exitApp), keyEquivalent: "q")
+        statusBarMenu.addItem(withTitle: "🗑 清空所有内容", action:  #selector(clearAll), keyEquivalent: "k")
+        statusBarMenu.addItem(menuItemGitHub)
+        statusBarMenu.addItem(menuItemAboutLunarBar)
+        statusBarMenu.addItem(NSMenuItem.separator())
+        statusBarMenu.addItem(withTitle: "📋 下面是你的剪切板历史内容,点击即可复制", action: nil, keyEquivalent: "")
+        statusBarMenu.addItem(withTitle: "⌨️ 同时按下command+control+options键激活", action: nil, keyEquivalent: "")
+        statusBarMenu.addItem(infoItem)
+        statusBarMenu.addItem(withTitle: "============↓↓↓ 分隔 ↓↓↓============", action: nil, keyEquivalent: "")
+        statusBarMenu.addItem(NSMenuItem.separator())
+        
+        reloadInfoItem()
+    }
+    
+    private func reloadInfoItem() {
+        print("Reloading info item...")
+        let text = "ℹ️ 目前总条数: \(self.dbManger.readHistory().count) , 数据库大小: " + self.dbManger.getDBFileSize()
+        infoItem.title = text
+    }
+    
     private func addClipBoardMonitor() {
-        clipBoardWoker.startListening()
-        clipBoardWoker.onNewCopy { (content) in
-            if self.statusBarMenu.items.count >= 6 { // 这个6就是上面写死的那6个占位item
-                if self.db.addContent(content: content) {
-                    self.statusBarMenu.insertItem(withTitle: content, action: #selector(self.action), keyEquivalent: "", at: 6)
-                }
+        print("Adding clipboard monitor...")
+        clipboardWorker.startListening()
+        clipboardWorker.onNewCopy { [weak self] content in
+            guard let self = self else { return }
+            print("New content copied: \(content)")
+            if self.statusBarMenu.items.count >= self.fixedMenuItemCount, self.dbManger.addContent(content: content) {
+                self.statusBarMenu.insertItem(withTitle: content, action: #selector(self.copyToClipboard), keyEquivalent: "", at: self.fixedMenuItemCount)
             }
         }
     }
     
     /// 初始化状态栏按钮
     func initStatusBar() {
-        statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        print("Initializing status bar...")
+        statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusBarItem.button?.title = "🌯"
         statusBarItem.menu = statusBarMenu
         
         self.resetDefaultItems()
     }
     
-    @objc func action( sender : NSButton) {
-        let title = sender.title
+    var menuItemGitHub: NSMenuItem {
+        let item = NSMenuItem(title: "🔗 Github")
+        item.addAction {
+            print("Opening Github link...")
+            NSWorkspace.shared.safelyOpenURL(string: "https://github.com/sushushu/copy")
+        }
+        return item
+    }
+    
+    var menuItemAboutLunarBar: NSMenuItem {
+        let item = NSMenuItem(title: "💊 关于Kao!")
+        item.addAction {
+            print("Opening About panel...")
+            NSApp.activate(ignoringOtherApps: true)
+            NSApp.orderFrontStandardAboutPanel()
+        }
+        return item
+    }
 
-        self.clipBoardWoker.copy(string: title)
+    // MARK: - Privete
+    @objc private func copyToClipboard(sender: NSMenuItem) {
+        let title = sender.title
+        clipboardWorker.copy(string: title)
+        print("Copying the value: \(title) to clipboard")
     }
     
-    @objc func _exit() {
-        exit(1)
+    @objc func exitApp() {
+        print("Exiting app...")
+        NSApplication.shared.terminate(nil)
     }
     
-    @objc func _clearDB() {
-        if self.db.clearContentTable() {
-            print("clear ing...")
-            self.initStatusBar()
+    @objc func clearAll() {
+        print("Clearing all content...")
+        if self.dbManger.clearContentTable() {
+            print("Content cleared successfully")
+            resetDefaultItems()
+        } else {
+            print("Failed to clear content")
         }
     }
     
-    // MARK: - obsv
+    // MARK: - Obsv
     // 监听按钮激活
-    func addGlobalObsvKeyboardMonitor() {
-        NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { (event) in
-            if event.modifierFlags.contains(.command) && event.modifierFlags.contains(.control) && event.modifierFlags.contains(.option) {
+    private func addGlobalKeyboardMonitor() {
+        print("Adding global keyboard monitor...")
+        NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged) { [weak self] event in
+            guard let self = self else { return }
+            if event.modifierFlags.contains([.command, .control, .option]) {
+                print("Global keyboard shortcut detected, showing menu...")
                 self.statusBarItem.popUpMenu(self.statusBarMenu)
             }
         }
     }
     
-    // MARK: private
-//    func _alert(title:String? , message:String?) { // TODO: 不用在当前App响应
-//        let alert = NSAlert()
-//        alert.messageText = title ?? ""
-//        alert.informativeText = message ?? ""
-//        alert.addButton(withTitle: "关闭")
-//        if let window = window {
-//        alert.beginSheetModal(for: window., completionHandler: nil)
-//        } else {
-//            alert.runModal()
-//        }
-//    }
-    
+    // MARK: - NSMenuDelegate
+    func menuWillOpen(_ menu: NSMenu) {
+        print("Menu will open, reloading info item...")
+        reloadInfoItem()
+    }
 }
 

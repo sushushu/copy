@@ -23,6 +23,18 @@ struct Utils {
         let ret = Int(dateNow.timeIntervalSince1970) * 1000
         return ret
     }
+    
+    //    func _alert(title:String? , message:String?) { // TODO: 不用在当前App响应
+    //        let alert = NSAlert()
+    //        alert.messageText = title ?? ""
+    //        alert.informativeText = message ?? ""
+    //        alert.addButton(withTitle: "关闭")
+    //        if let window = window {
+    //        alert.beginSheetModal(for: window., completionHandler: nil)
+    //        } else {
+    //            alert.runModal()
+    //        }
+    //    }
 }
 
 

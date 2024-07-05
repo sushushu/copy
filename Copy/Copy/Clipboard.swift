@@ -8,25 +8,28 @@
 
 import AppKit
 
+/// Clipboard class to manage and listen to clipboard changes
 class Clipboard {
     typealias Hook = (String) -> Void
     
-    private let pasteboard = NSPasteboard.general // 公共剪切板
-    //  private let pasteboard = NSPasteboard.withUniqueName() // 私有剪切板
+    private let pasteboard = NSPasteboard.general // 公共剪切板 ， 私有剪切板 NSPasteboard.withUniqueName()
+    private let timerInterval: TimeInterval = 1.0 // Time interval for checking the pasteboard
+    private var changeCount: Int // Tracks the change count of pasteboard
+    private var hooks: [Hook] // Array of hooks to be called on new copy
     
-    private let timerInterval = 1.0
-    private var changeCount: Int
-    private var hooks: [Hook]
-    
+    /// Initializes the Clipboard instance
     init() {
-        changeCount = pasteboard.changeCount // TODO: changeCount是干嘛的？
-        hooks = []
+        self.changeCount = pasteboard.changeCount
+        self.hooks = []
     }
     
+    /// Adds a new hook to be called on new copy
+     /// - Parameter hook: The closure to be called with the copied string
     func onNewCopy(_ hook: @escaping Hook) {
         hooks.append(hook)
     }
     
+    /// Starts listening to the pasteboard for changes
     func startListening() {
         Timer.scheduledTimer(timeInterval: timerInterval,
                              target: self,
@@ -35,32 +38,31 @@ class Clipboard {
                              repeats: true)
     }
     
-    /// 写入剪切板
+    /// Copies the given string to the pasteboard
+    /// - Parameter string: The string to be copied to the pasteboard
     func copy(string: String) {
-        if string.count == 0 {
-            return;
-        }
-        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-        pasteboard.setString(string, forType: NSPasteboard.PasteboardType.string)
+        guard !string.isEmpty else { return }
+        pasteboard.declareTypes([.string], owner: nil)
+        pasteboard.setString(string, forType: .string)
     }
     
     // 如果是网页复制的图片类型一般是这几种:  WebURLsWithTitlesPboardType 、 com.apple.webarchive 、 Apple Web Archive pasteboard type
-    @objc
-    func checkPasteboard() {
-        guard pasteboard.changeCount != changeCount else {
-            return
-        }
+    /// Checks the pasteboard for new content
+    @objc func checkPasteboard() {
+        // Check if the pasteboard content has changed
+        guard pasteboard.changeCount != changeCount else { return }
         
+        // Update the change count
         changeCount = pasteboard.changeCount
         
-        if let img = NSImage.init(pasteboard: pasteboard) {  // TODO: 这里已经可以拿到image，可以压缩存到数据库。多文件复制，参考：https://blog.csdn.net/u014600626/article/details/53635192
+        // Check if there is an image in the pasteboard
+        // TODO: 这里已经可以拿到image，可以压缩存到数据库。多文件复制，参考：https://blog.csdn.net/u014600626/article/details/53635192
+        if let img = NSImage(pasteboard: pasteboard) {
             for hook in hooks {
-                hook("这是图片 + \(img.className) ")
+                hook("这是图片 + \(img.className)")
             }
-            return
-        }
-     
-        if let lastItem = pasteboard.string(forType: NSPasteboard.PasteboardType.string) {
+        } else if let lastItem = pasteboard.string(forType: .string) {
+            // Check if there is a string in the pasteboard
             for hook in hooks {
                 hook(lastItem)
             }

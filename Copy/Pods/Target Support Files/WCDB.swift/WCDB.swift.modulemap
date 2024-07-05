@@ -1,6 +1,14 @@
 framework module WCDBSwift {
-  umbrella header "WCDB.swift-umbrella.h"
+    module All {
+        export *
+    }
+}
 
-  export *
-  module * { export * }
+framework module WCDB_Private {
+    requires objc
+
+    module BridgeHeader {
+        umbrella header "WCDBBridging.h"
+        export *
+    }
 }

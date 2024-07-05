@@ -25,7 +25,10 @@ struct BaseModel: TableCodable {
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = BaseModel
-        static let objectRelationalMapping = TableBinding(CodingKeys.self)
+        static let objectRelationalMapping = TableBinding(CodingKeys.self) {
+            BindColumnConstraint(identifier, isPrimary: true ,  isAutoIncrement : true)
+            BindColumnConstraint(description, isNotNull: true, defaultTo: "defaultDescription")
+        }
         
         case identifier
         case description
@@ -35,13 +38,6 @@ struct BaseModel: TableCodable {
         case timeStamp
         case type
         case isEncrypt
-        
-        static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
-            return [
-                identifier: ColumnConstraintBinding(isPrimary: true , isAutoIncrement : true)
-//                description: ColumnConstraintBinding(isNotNull: false, defaultTo: "defaultDescription"),
-            ]
-        }
     }
     
     var isAutoIncrement: Bool = true // 用于定义是否使用自增的方式插入

@@ -1,25 +1,20 @@
 PODS:
-  - SQLiteRepairKit (1.2.2):
-    - WCDBOptimizedSQLCipher (~> 1.2.0)
-  - WCDB.swift (1.0.8.2):
-    - SQLiteRepairKit (~> 1.2.0)
-    - WCDBOptimizedSQLCipher (~> 1.2.0)
-  - WCDBOptimizedSQLCipher (1.2.1)
+  - WCDB.swift (2.1.6):
+    - WCDBOptimizedSQLCipher (= 1.4.4)
+  - WCDBOptimizedSQLCipher (1.4.4)
 
 DEPENDENCIES:
-  - WCDB.swift
+  - WCDB.swift (~> 2.1.6)
 
 SPEC REPOS:
   trunk:
-    - SQLiteRepairKit
     - WCDB.swift
     - WCDBOptimizedSQLCipher
 
 SPEC CHECKSUMS:
-  SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
-  WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
-  WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
+  WCDB.swift: 275f39a899bdc231065e5d90f252b361b08310d4
+  WCDBOptimizedSQLCipher: 7f03bb7c94ad164996f0fa87d0f76026f5ab0f92
 
-PODFILE CHECKSUM: 3379bb2c6a211190ea2cdc595a7e2c1923bd268a
+PODFILE CHECKSUM: 5e3f34a0b8a0938b9e18d58408eb60e066053e3b
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.14.3
