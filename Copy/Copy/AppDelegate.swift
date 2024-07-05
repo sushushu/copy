@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var statusBarMenu = NSMenu()
     let dbManger = DBManager.shared
     var infoItem = NSMenuItem()
-    private let fixedMenuItemCount = 9 // 用于固定菜单项的数量
+    private let fixedMenuItemCount = 10 // HadeCode，用于固定菜单项的数量
     private var isMenuVisible: Bool = false
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
