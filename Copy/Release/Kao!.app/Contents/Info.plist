@@ -29,7 +29,7 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -47,7 +47,7 @@
 	<key>DTXcodeBuild</key>
 	<string>15C65</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.13</string>
+	<string>13.0</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2024 sushushu. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
