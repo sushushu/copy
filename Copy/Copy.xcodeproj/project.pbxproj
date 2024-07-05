@@ -10,6 +10,7 @@
 		2D991CA22C385C710025CAA9 /* NSControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D991CA12C385C710025CAA9 /* NSControl+Extension.swift */; };
 		2D991CA42C385C870025CAA9 /* NSMenuItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D991CA32C385C870025CAA9 /* NSMenuItem+Extension.swift */; };
 		2D991CA62C385CC10025CAA9 /* NSWorkspace+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D991CA52C385CC10025CAA9 /* NSWorkspace+Extension.swift */; };
+		2D991CAA2C38670F0025CAA9 /* SMAppService+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D991CA92C38670F0025CAA9 /* SMAppService+Extension.swift */; };
 		B22A54BA24C9649D000AC7CD /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22A54B924C9649D000AC7CD /* BaseModel.swift */; };
 		B22A54BC24C96737000AC7CD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22A54BB24C96737000AC7CD /* Utils.swift */; };
 		B232F77124C816C500465CFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B232F77024C816C500465CFA /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		2D991CA12C385C710025CAA9 /* NSControl+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSControl+Extension.swift"; sourceTree = "<group>"; };
 		2D991CA32C385C870025CAA9 /* NSMenuItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+Extension.swift"; sourceTree = "<group>"; };
 		2D991CA52C385CC10025CAA9 /* NSWorkspace+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSWorkspace+Extension.swift"; sourceTree = "<group>"; };
+		2D991CA92C38670F0025CAA9 /* SMAppService+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SMAppService+Extension.swift"; sourceTree = "<group>"; };
 		66FA72E15F11E6913E9CDCC4 /* Pods-Copy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Copy.debug.xcconfig"; path = "Target Support Files/Pods-Copy/Pods-Copy.debug.xcconfig"; sourceTree = "<group>"; };
 		B22A54B924C9649D000AC7CD /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		B22A54BB24C96737000AC7CD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				2D991CA12C385C710025CAA9 /* NSControl+Extension.swift */,
 				2D991CA32C385C870025CAA9 /* NSMenuItem+Extension.swift */,
 				2D991CA52C385CC10025CAA9 /* NSWorkspace+Extension.swift */,
+				2D991CA92C38670F0025CAA9 /* SMAppService+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D991CAA2C38670F0025CAA9 /* SMAppService+Extension.swift in Sources */,
 				B232F78524C819FD00465CFA /* DBManager.swift in Sources */,
 				B251A5B925568E99002C7DC0 /* MainWindowController.swift in Sources */,
 				B232F78124C816F700465CFA /* Clipboard.swift in Sources */,
@@ -393,7 +397,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sl.Copy;
 				PRODUCT_NAME = "Kao!";
@@ -417,7 +421,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sl.Copy;
 				PRODUCT_NAME = "Kao!";

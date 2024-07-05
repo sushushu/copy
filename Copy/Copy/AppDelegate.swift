@@ -8,6 +8,7 @@
 
 import Cocoa
 import Carbon
+import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var statusBarMenu = NSMenu()
     let dbManger = DBManager.shared
     var infoItem = NSMenuItem()
+    var launchAtLoginItem = NSMenuItem()
     private let fixedMenuItemCount = 10 // HadeCode，用于固定菜单项的数量
     private var isMenuVisible: Bool = false
     
@@ -44,6 +46,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         
         statusBarMenu.addItem(withTitle: "❗️ 退出应用", action:  #selector(exitApp), keyEquivalent: "q")
         statusBarMenu.addItem(withTitle: "🗑 清空所有内容", action:  #selector(clearAll), keyEquivalent: "k")
+
+        launchAtLoginItem = NSMenuItem(title: "登录时启动")
+        launchAtLoginItem.addAction {
+          do {
+            try SMAppService.mainApp.toggle()
+              print("SMAppService toggle..")
+          } catch {
+              print("SMAppService error...\(error.localizedDescription)")
+          }
+        }
+        
+        statusBarMenu.addItem(launchAtLoginItem)
         statusBarMenu.addItem(menuItemGitHub)
         statusBarMenu.addItem(menuItemAboutLunarBar)
         statusBarMenu.addItem(NSMenuItem.separator())
@@ -60,6 +74,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         print("Reloading info item...")
         let text = "ℹ️ 目前总条数: \(self.dbManger.readHistory().count) , 数据库大小: " + self.dbManger.getDBFileSize()
         infoItem.title = text
+        
+        launchAtLoginItem.setOn((SMAppService.mainApp.isEnabled))
     }
     
     private func addClipBoardMonitor() {
@@ -103,6 +119,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         return item
     }
 
+    var menuItemLaunchAtLogin: NSMenuItem {
+      let item = NSMenuItem(title: "登录时启动")
+//      item.setOn(SMAppService.mainApp.isEnabled)
+//        item.setOn(true)
+      item.addAction {
+        do {
+          try SMAppService.mainApp.toggle()
+            print("SMAppService toggle..")
+        } catch {
+            print("SMAppService error...\(error.localizedDescription)")
+        }
+      }
+
+      return item
+    }
+    
     // MARK: - Privete
     @objc private func copyToClipboard(sender: NSMenuItem) {
         let title = sender.title
