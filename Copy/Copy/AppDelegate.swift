@@ -18,8 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var statusBarMenu = NSMenu()
     let dbManger = DBManager.shared
     var infoItem = NSMenuItem()
-    var launchAtLoginItem = NSMenuItem()
-    private let fixedMenuItemCount = 10 // HadeCode，用于固定菜单项的数量
+    var launchAtLoginItem  = NSMenuItem()
+    private let fixedMenuItemCount = 10 // hard-coded，用于固定菜单项的数量
     private var isMenuVisible: Bool = false
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -56,10 +56,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
               print("SMAppService error...\(error.localizedDescription)")
           }
         }
-        
-        statusBarMenu.addItem(launchAtLoginItem)
+      
         statusBarMenu.addItem(menuItemGitHub)
         statusBarMenu.addItem(menuItemAboutLunarBar)
+        statusBarMenu.addItem(launchAtLoginItem)
         statusBarMenu.addItem(NSMenuItem.separator())
         statusBarMenu.addItem(withTitle: "📋 下面是你的剪切板历史内容,点击即可复制", action: nil, keyEquivalent: "")
         statusBarMenu.addItem(withTitle: "⌨️ 同时按下command+control+options键激活", action: nil, keyEquivalent: "")
@@ -119,21 +119,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         return item
     }
 
-    var menuItemLaunchAtLogin: NSMenuItem {
-      let item = NSMenuItem(title: "登录时启动")
-//      item.setOn(SMAppService.mainApp.isEnabled)
-//        item.setOn(true)
-      item.addAction {
-        do {
-          try SMAppService.mainApp.toggle()
-            print("SMAppService toggle..")
-        } catch {
-            print("SMAppService error...\(error.localizedDescription)")
-        }
-      }
-
-      return item
-    }
     
     // MARK: - Privete
     @objc private func copyToClipboard(sender: NSMenuItem) {
@@ -157,6 +142,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
     }
     
+    
     // MARK: - Obsv
     // 监听按钮激活
     private func addGlobalKeyboardMonitor() {
@@ -169,6 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             }
         }
     }
+    
     
     // MARK: - NSMenuDelegate
     func menuWillOpen(_ menu: NSMenu) {
