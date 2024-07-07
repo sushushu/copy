@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     let dbManger = DBManager.shared
     var infoItem = NSMenuItem()
     var launchAtLoginItem  = NSMenuItem()
-    private let fixedMenuItemCount = 10 // hard-coded，用于固定菜单项的数量
+    private let fixedMenuItemCount = 11 // hard-coded，用于固定菜单项的数量
     private var isMenuVisible: Bool = false
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         statusBarMenu.delegate = self
         
         statusBarMenu.addItem(withTitle: "❗️ 退出应用", action:  #selector(exitApp), keyEquivalent: "q")
-        statusBarMenu.addItem(withTitle: "🗑 清空所有内容", action:  #selector(clearAll), keyEquivalent: "k")
+        statusBarMenu.addItem(withTitle: "🗑 清空所有内容", action:  #selector(showSystemAlert), keyEquivalent: "k")
 
         launchAtLoginItem = NSMenuItem(title: "登录时启动")
         launchAtLoginItem.addAction {
@@ -141,7 +141,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             print("Failed to clear content")
         }
     }
+    @objc func showSystemAlert() {
+        print("ShowSystemAlert ...")
+        let alert = NSAlert()
+        alert.messageText = "是否删除所有内容？"
+        let text = "目前总条数: \(self.dbManger.readHistory().count) , 数据库占用大小: " + self.dbManger.getDBFileSize()
+        alert.informativeText = text
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "确定")
+        alert.addButton(withTitle: "取消")
+        let response = alert.runModal()
+        switch response {
+        case .alertFirstButtonReturn:
+            print("DidClick commit button ...")
+            clearAll()
+        default:
+            break
+        }
+    }
     
+
     
     // MARK: - Obsv
     // 监听按钮激活
