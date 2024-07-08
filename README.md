@@ -14,4 +14,5 @@
 <img src="https://github.com/sushushu/copy/assets/13466754/a57e489f-dac2-43e8-9773-02670a91e2d9" width="400">
 
 
-ps： App的名字和菜单栏小logo跟国蛋有关
+
+小彩蛋： App的名字和菜单栏小logo跟国蛋有关
