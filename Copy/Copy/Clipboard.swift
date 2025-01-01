@@ -58,9 +58,9 @@ class Clipboard {
         // Check if there is an image in the pasteboard
         // TODO: 这里已经可以拿到image，可以压缩存到数据库。多文件复制，参考：https://blog.csdn.net/u014600626/article/details/53635192
         if let img = NSImage(pasteboard: pasteboard) {
-            for hook in hooks {
-                hook("这是图片 + \(img.className)")
-            }
+//            for hook in hooks {
+//                hook("这是图片 + \(img.className)")
+//            }
         } else if let lastItem = pasteboard.string(forType: .string) {
             // Check if there is a string in the pasteboard
             for hook in hooks {
